@@ -1,11 +1,11 @@
-StatsE is a centralized multi-dimensional metrics aggregator.
+StatsE is a centralised multi-dimensional metrics aggregator.
 
 This idea was (AFAIK) first [described by Flickr](http://code.flickr.com/blog/2008/10/27/counting-timing/) as StatsD. It
 was later on [popularised by Etsy](http://codeascraft.etsy.com/2011/02/15/measure-anything-measure-everything/). Reading
 their descriptions would be a good way to understand the idea and motivation behind StatsE. See below for the motivation
 behind creating this alternative system instead of just using one of these (open source) StatsD implementations.
 
-StasE is *Stats*D, *E*nhanced. The primary enhancement is the notion of multi-dimensionality.
+StasE is <i>Stats</i>D, <i>E</i>nhanced. The primary enhancement is the notion of multi-dimensionality.
 
 
 Why StatsE?
