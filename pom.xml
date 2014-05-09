@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>StatsE</name>
-    <description>StasD Enhance, a UDP daemon for aggregating metrics across hosts</description>
+    <description>A centralised multi-dimensional metrics aggregator.</description>
     <url>https://git@github.com/flipkart-incubator/statse</url>
 
     <groupId>com.flipkart</groupId>
