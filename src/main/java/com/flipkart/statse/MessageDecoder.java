@@ -63,8 +63,8 @@ import java.util.regex.Pattern;
 public class MessageDecoder extends FrameDecoder {
 
     private static final Pattern splitPattern = Pattern.compile("\\s+");
-    private static final Pattern metricPattern = Pattern.compile("(\\w[\\w-]*):(\\d+)\\|(\\w+)");
-    private static final Pattern tagPattern = Pattern.compile("(\\w[\\w-]*):(\\w+)");
+    private static final Pattern metricPattern = Pattern.compile("(\\w[\\w-]*):(\\d+(\\.\\d+)?)\\|(\\w+)");
+    private static final Pattern tagPattern = Pattern.compile("(\\w[\\w-]*):(\\S+)");
 
     private static final Map<String, MetricDatum.Type> typeMap
             = ImmutableMap.<String, MetricDatum.Type>builder()
@@ -107,15 +107,15 @@ public class MessageDecoder extends FrameDecoder {
     private Datum decodeDatum (String datumStr) {
         Matcher matcher = metricPattern.matcher(datumStr);
         if (matcher.matches()) {
-            MetricDatum.Type type = typeMap.get(matcher.group(3));
+            MetricDatum.Type type = typeMap.get(matcher.group(4));
             if (type == null) {
                 return null;
             }
             
             String name = matcher.group(1);
-            int value = Integer.parseInt(matcher.group(2));
+            double value = Double.parseDouble(matcher.group(2));
             
-            return new MetricDatum(name, value, type);
+            return new MetricDatum(name, (int)value, type);
         }
         
         matcher = tagPattern.matcher(datumStr);
